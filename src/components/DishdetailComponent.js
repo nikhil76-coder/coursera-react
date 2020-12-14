@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Card, CardImg, CardImgOverlay, CardText, CardBody,
     CardTitle,
@@ -8,21 +8,9 @@ import {
 
 
 
-class DishDetail extends Component {
+   
 
-    // constructor(props) {
-    //     super(props);
-
-    //     this.state = {
-    //         selectedDish: null
-    //     }
-    // }
-
-    // onDishSelect(dish) {
-    //     this.setState({ selectedDish: dish });
-    // }
-
-    renderDish(dish) {
+   function  RenderDish({dish}) {
         if (dish !== null)
             return (
               
@@ -46,8 +34,10 @@ class DishDetail extends Component {
 
 
 
-    render() {
-        const dishDetail = (comments) => {
+    const DishDetail =(props)=> {
+       
+       
+        function RenderComments({comments}) {
             let options = { year: 'numeric', month: 'short', day: 'numeric' };
             return (
                 <div>
@@ -75,21 +65,17 @@ class DishDetail extends Component {
 
         return (
                
-            // <div className="col-6 col-md-5 m-1">
-            //     {this.renderDish(this.props.dish)}  {dishDetail(this.props.dish.comments)}
-              
-            //      </div>
-            //      <div>
+           
                 
             <div className="container">
                 <div className="row">
                 
-                {this.renderDish(this.props.dish)}
+                <RenderDish dish ={props.dish}/>
                
-                {dishDetail(this.props.dish.comments)}
+                <RenderComments comments={props.dish.comments} />
                 
                 </div>
-                </div>
+            </div>
                    
               
               
@@ -102,5 +88,5 @@ class DishDetail extends Component {
 
     }
 
-}
+
 export default DishDetail
